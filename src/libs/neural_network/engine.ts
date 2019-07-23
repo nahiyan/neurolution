@@ -7,23 +7,6 @@ interface NeuralNetworkModel {
     identity_biases: any;
 }
 
-// imperative
-
-// function random_weights(layer_sizes: number[]): any {
-//     let weights: any = [];
-//     let i: any;
-//     for (i in range(len(layer_sizes))) {
-//         // skip the first layer, as it has no previous layer
-//         if(i != 0) {
-//             weights.push(
-//                 nj.random(
-//                     layer_sizes[i - 1], layer_sizes[i]).tolist());
-//         }
-//     }
-
-//     return weights;
-// }
-
 function random_weights(layer_sizes: number[]): any {
     let weights: any = [];
 
@@ -79,20 +62,6 @@ function random_biases(layer_sizes: number[]): any {
 
     return biases;
 }
-
-// function random_biases(layer_sizes: number[]): any {
-//     let biases: any = [];
-
-//     let i: any;
-//     for (i in range(len(layer_sizes))) {
-//         // skip the first layer, as it has no previous layer
-//         if(i != 0)
-//             biases.push(
-//                 nj.random(1, layer_sizes[i]).tolist());
-//     }
-
-//     return biases;
-// }
 
 // functional
 
