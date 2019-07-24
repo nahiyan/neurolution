@@ -256,20 +256,6 @@ function sigmoid(x) {
 function sigmoid_prime(x) {
     return Math.exp(-x) / Math.pow(1 + Math.exp(-x), 2);
 }
-// imperative
-// function random_weights(layer_sizes: number[]): any {
-//     let weights: any = [];
-//     let i: any;
-//     for (i in range(len(layer_sizes))) {
-//         // skip the first layer, as it has no previous layer
-//         if(i != 0) {
-//             weights.push(
-//                 nj.random(
-//                     layer_sizes[i - 1], layer_sizes[i]).tolist());
-//         }
-//     }
-//     return weights;
-// }
 function random_weights(layer_sizes) {
     var weights = [];
     // const normal_dist = gaussian(0, 1);
@@ -318,17 +304,6 @@ function random_biases(layer_sizes) {
     }
     return biases;
 }
-// function random_biases(layer_sizes: number[]): any {
-//     let biases: any = [];
-//     let i: any;
-//     for (i in range(len(layer_sizes))) {
-//         // skip the first layer, as it has no previous layer
-//         if(i != 0)
-//             biases.push(
-//                 nj.random(1, layer_sizes[i]).tolist());
-//     }
-//     return biases;
-// }
 // functional
 function activate(x) {
     for (var i = 0; i < x.selection.data.length; i++) {
@@ -496,13 +471,14 @@ function breed_generation(model) {
     var mutation_rate = 0.02;
     // natural selection
     var fittest_individuals = best_fit_select(model, selection_count);
-    // cross over to fill the vacant spots
+    // entry for new generation
     var new_gen = {
         cars: [],
         time: Date.now()
     };
+    // insert the new generation in the list of generations
     model.generations.push(new_gen);
-    // fill the new generation by crossovers
+    // fill the new generation with crossovers
     while (len(new_gen.cars) != model.population_size) {
         new_gen.cars.push(crossover(model, fittest_individuals));
     }

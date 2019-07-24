@@ -95,16 +95,18 @@ function breed_generation(model: SimulationModel): SimulationModel {
 	let fittest_individuals: Car[] =
 		best_fit_select(model, selection_count);
 
-	// cross over to fill the vacant spots
+	// entry for new generation
 
 	let new_gen: Generation = {
 		cars: [],
 		time: Date.now()
 	};
 
+	// insert the new generation in the list of generations
+
 	model.generations.push(new_gen);
 
-	// fill the new generation by crossovers
+	// fill the new generation with crossovers
 
 	while (len(new_gen.cars) != model.population_size) {
 		new_gen.cars.push(
