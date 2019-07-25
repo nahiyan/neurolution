@@ -100,21 +100,27 @@ Here are few facts:
 
 - A new generation is always reproduced from the previous one.
 - Only the best fit individuals (neural networks) are used for creating the newer generation.
-- In this simulation, the distance travelled, and the time taken (basically the average speed) is considered for calculating the fitness.
+- In this simulation, the distance travelled, and the average speed is considered for calculating the fitness.
 - Crossover involves using the gene pool of the best fit individuals to craft a newer one.
 
 ## The Cars
 
-The simulation session begins with a generation of cars. The cars are each powered by a neural network, and are equipped with 3 proximity sensors at the front. The cars can only accelerate, and steer upto a certain angle (15 degrees).
+![Car](docs/images/car.png "Car")
 
-The neural networks each got 3 input neurons, and 2 output neurons. The 3 input neurons are fed values from the 3 proximiy sensors. And the values from the output neurons directly impact acceleration, and torque applied to the front axle.
+The simulation session begins with [a generation of cars](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/neural_network/evolution.ts#L54). The cars are each powered by a neural network, and are equipped with 3 proximity sensors at the front. The cars can only accelerate, and steer upto a certain angle (15 degrees).
 
-In other words, the neural network controls the acceleration, and the steering control of the car.
+The neural networks each got [3 input neurons](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/simulation/car.ts#L534), and [2 output neurons](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/simulation/car.ts#L541). The 3 input neurons are fed [values from the 3 proximity sensors](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/simulation/car.ts#L460). And [the values from the output neurons directly impact acceleration, and torque applied to the front axle](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/simulation/car.ts#L559).
+
+![Sensors](docs/images/sensors.png "Sensors")
+
+In other words, the neural network controls the acceleration, and the steering of the car.
+
+You can change the settings related to the population size of each generation, layer sizes of the neural networks, etc by modifying the [definition of the initial model](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/phaser/preload.ts#L8).
 
 ## New Generation
 
-One generation is tested in the scene at a time. Whenever a car hits the boundary of the track, it is immediately removed from the scene, and its fitness value is marked. When all the cars in a generation are removed, the generation is over, and a new generation needs to be produced to continue the evolution.
+One generation is tested in the scene at a time. Whenever a car hits the boundary of the track, it is immediately removed from the scene, and its [fitness value](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/neural_network/evolution.ts#L74) is marked. When all the cars in a generation are [removed](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/phaser/update.ts#L19), the generation is over, and [a new generation needs to be produced to continue the evolution](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/neural_network/evolution.ts#L82).
 
-To do so, the individuals (cars) are ranked based on their fitnesses, and the best fit individuals are chosen for reproduction. Crossover is used as a technique of reproduction, where a new neural network is created using the weights and biases randomly selected from the neural networks of selected individuals. In other words, crossover creates new neural networks using the genes of best fit individuals.
+To do so, the individuals (cars) are ranked based on their fitnesses, and [the best fit individuals are chosen for reproduction](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/neural_network/evolution.ts#L187). [Crossover](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/neural_network/evolution.ts#L133) is used as a technique of reproduction, where a new neural network is created using the weights and biases randomly selected from the neural networks of selected individuals. In other words, crossover creates new neural networks using the genes of best fit individuals.
 
-After a new generation is created, each of its neural networks are mutated.
+After a new generation is created, each of its neural networks are [mutated](https://github.com/nahiyan/neurolution/blob/dd1ca68f497cc5506482a2547c1314640b3a9421/src/libs/neural_network/evolution.ts#L3). This ensures that none of the weights and biases are exactly copied from the parents, similar to what happens in nature, that is - genes are never copied 100% accurately.
