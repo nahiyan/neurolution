@@ -7,7 +7,7 @@ Neurolution is a simulation of cars controlled by neural networks, which evolves
 - The simulation is web-based that runs on a browser.
 - Much of the code is written in Typescript.
 - Phaser 3 is used as a game engine.
-- Box2D powers the physics engine.
+- Box2D used as a physics engine.
 - Network network engine powers each car.
 - Network networks evolve through generations, instead of other training methods such as stochastic gradient descent.
 
