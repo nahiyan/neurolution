@@ -1,6 +1,6 @@
 # Introduction
 
-Neurolution is a simulation of cars controlled by neural networks, which evolves to learn to drive.
+Neurolution is a simulation of cars controlled by neural networks, each of which evolves to learn to drive.
 
 # Overview
 
@@ -85,9 +85,9 @@ Visit `localhost:3000` in your browser to run the simulation.
 
 Hotkeys:
 
-| Key        |Description  |
-| ------------- |-------------|-----|
-| Spacebar      | Pause/Resume. |
+| Key        | Description   |
+| -----------|---------------|
+| Spacebar   | Pause/Resume. |
 | H      | Toggles activation of manual control of the best fit car. |
 | Arrow Keys | Controls any activated car. |
 
@@ -115,14 +115,14 @@ Here, it's used mainly for collision detection, and proximity calculation; espec
 
 - **assets** - Contains all the sprites and resources associated with the simulation.
 - **src**
-	- **libs**
-		- **common** - Contains scripts required by other libs.
-		- **neural_network** - Represents the entire neural network associated stuff, including evolution.
-		- **phaser** - Everything related to the game engine's (Phaser 3) preload, setup, creation, update, etc.
-		- **simulation** - Holds code related to the simulation, such as the car, road tracks, etc.
+    - **libs**
+        - **common** - Contains scripts required by other libs.
+        - **neural_network** - Represents the entire neural network associated stuff, including evolution.
+        - **phaser** - Everything related to the game engine's (Phaser 3) preload, setup, creation, update, etc.
+        - **simulation** - Holds code related to the simulation, such as the car, road tracks, etc.
 
 - **static**
-	- **js** - All the JavaScript scripts, such as that generated after compiling all the TypeScript files, and external libraries such as Box2D.
+    - **js** - All the JavaScript scripts, such as those generated after compiling all the TypeScript files, and external libraries such as Box2D.
 
 - *index.js* - A node.js script which simply serves *index.html* in a server.
 - *index.html* - Webpage where the entire simulation is hosted.
